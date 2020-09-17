@@ -15,7 +15,7 @@ import collection.JavaConverters._
 import org.cloudbus.cloudsim.hosts.{Host, HostSimple}
 import org.cloudbus.cloudsim.network.topologies.NetworkTopology
 import org.cloudbus.cloudsim.resources.{Pe, PeSimple}
-import org.cloudbus.cloudsim.schedulers.vm.{VmSchedulerAbstract, VmSchedulerTimeShared}
+import org.cloudbus.cloudsim.schedulers.vm.{VmSchedulerAbstract, VmSchedulerSpaceShared, VmSchedulerTimeShared}
 import org.cloudbus.cloudsim.utilizationmodels.{UtilizationModelDynamic, UtilizationModelFull}
 import org.cloudbus.cloudsim.vms.{Vm, VmSimple}
 
@@ -30,7 +30,7 @@ class DataCenterHelper {
     new DatacenterBrokerSimple(cloudsim)
   }
 
-  def createSimpleDc(dc:DataCenterConfigHelper,cloudSim: CloudSim, hostList:util.ArrayList[Host], policy: VmAllocationPolicyAbstract): Datacenter ={
+  def createSimpleDc(dc:DataCenterConfigHelper,cloudSim: CloudSim, hostList:util.List[Host], policy: VmAllocationPolicyAbstract): Datacenter ={
     val dc0 = new DatacenterSimple(cloudSim,hostList,policy)
     dc0.getCharacteristics.setCostPerSecond(dc.cost).setCostPerMem(dc.costPerMemory).setCostPerBw(dc.costPerBw).setCostPerStorage(dc.costPerStorage).setOs(dc.os)
     dc0
@@ -57,14 +57,9 @@ class DataCenterHelper {
   }
 
   def createHost(host:HostConfigHelper): Host = {
-    val hostPes = new ListBuffer[Pe]
-
-    for (i<-0 until host.cores){
-      hostPes += new PeSimple(host.mips)
-    }
-
-    val PeList : java.util.List[Pe] = hostPes.asJava
-    val host0 = new HostSimple(host.ram,host.bw,host.storage,PeList)
+    //Creating hostPes
+    val hostPes: List[Pe] = List.tabulate(host.cores)(i => new PeSimple(host.mips))
+    val host0 = new HostSimple(host.ram,host.bw,host.storage,hostPes.asJava).setVmScheduler(new VmSchedulerSpaceShared)
     host0
   }
 
@@ -75,7 +70,7 @@ class DataCenterHelper {
   }
 
   def createCloudLets(cl:CloudletConfigHelper): Cloudlet ={
-    val utilizationModel = new UtilizationModelFull()
+    val utilizationModel = new UtilizationModelDynamic(0.5)
     val cloudlet0 = new CloudletSimple(cl.length,cl.pesNumber, utilizationModel)
     cloudlet0
   }

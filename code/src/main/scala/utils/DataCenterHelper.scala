@@ -16,7 +16,7 @@ import org.cloudbus.cloudsim.hosts.{Host, HostSimple}
 import org.cloudbus.cloudsim.network.topologies.NetworkTopology
 import org.cloudbus.cloudsim.resources.{Pe, PeSimple}
 import org.cloudbus.cloudsim.schedulers.vm.{VmSchedulerAbstract, VmSchedulerSpaceShared, VmSchedulerTimeShared}
-import org.cloudbus.cloudsim.utilizationmodels.{UtilizationModelDynamic, UtilizationModelFull}
+import org.cloudbus.cloudsim.utilizationmodels.{UtilizationModelDynamic, UtilizationModelFull, UtilizationModelStochastic}
 import org.cloudbus.cloudsim.vms.{Vm, VmSimple}
 
 import scala.collection.mutable.ListBuffer
@@ -56,10 +56,10 @@ class DataCenterHelper {
     networkTopology.mapNode(broker.getId, briteNode)
   }
 
-  def createHost(host:HostConfigHelper): Host = {
+  def createHost(host:HostConfigHelper, policy : VmSchedulerAbstract): Host = {
     //Creating hostPes
     val hostPes: List[Pe] = List.tabulate(host.cores)(i => new PeSimple(host.mips))
-    val host0 = new HostSimple(host.ram,host.bw,host.storage,hostPes.asJava).setVmScheduler(new VmSchedulerSpaceShared)
+    val host0 = new HostSimple(host.ram,host.bw,host.storage,hostPes.asJava).setVmScheduler(policy)
     host0
   }
 
@@ -69,8 +69,10 @@ class DataCenterHelper {
     vm0
   }
 
+  //val SEED = 1234567
   def createCloudLets(cl:CloudletConfigHelper): Cloudlet ={
     val utilizationModel = new UtilizationModelDynamic(0.5)
+    //val utilizationModel = new UtilizationModelStochastic(SEED)
     val cloudlet0 = new CloudletSimple(cl.length,cl.pesNumber, utilizationModel)
     cloudlet0
   }

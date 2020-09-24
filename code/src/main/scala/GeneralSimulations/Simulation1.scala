@@ -1,15 +1,17 @@
-import java.util
+package GeneralSimulations
 
 import com.typesafe.config.ConfigFactory
 import org.cloudbus.cloudsim.allocationpolicies.VmAllocationPolicyBestFit
 import org.cloudbus.cloudsim.cloudlets.Cloudlet
 import org.cloudbus.cloudsim.core.CloudSim
 import org.cloudbus.cloudsim.hosts.Host
+import org.cloudbus.cloudsim.schedulers.vm.VmSchedulerTimeShared
 import org.cloudbus.cloudsim.vms.Vm
 import org.cloudsimplus.builders.tables.CloudletsTableBuilder
 import org.slf4j.{Logger, LoggerFactory}
-import utils.{CloudletConfigHelper, DataCenterConfigHelper, DataCenterHelper, HostConfigHelper, VmConfigHelper}
+import utils._
 import collection.JavaConverters._
+
 object Simulation1 extends App {
 
   //Logging start of simulation
@@ -36,28 +38,27 @@ object Simulation1 extends App {
 
 
   //Creating Host
-  val hosttemp : HostConfigHelper = new HostConfigHelper(simulation = "simulation1",model = "GeneralSimulations")
-  val hostList:List[Host] = List.tabulate(numHosts)(i=>helper.createHost(hosttemp))
+  val hosttemp: HostConfigHelper = new HostConfigHelper(simulation = "simulation1", model = "GeneralSimulations")
+  val hostList: List[Host] = List.tabulate(numHosts)(i => helper.createHost(hosttemp, new VmSchedulerTimeShared))
 
   //Creates a Datacenter with a list of Hosts.
   //Uses a VmAllocationPolicySimple by default to allocate VMs
-  val dc0_temp : DataCenterConfigHelper = new DataCenterConfigHelper(simulation = "simulation1",model = "GeneralSimulations")
-  var dc0 = helper.createSimpleDc(dc0_temp, cloudsim,hostList.asJava, new VmAllocationPolicyBestFit)
+  val dc0_temp: DataCenterConfigHelper = new DataCenterConfigHelper(simulation = "simulation1", model = "GeneralSimulations")
+  var dc0 = helper.createSimpleDc(dc0_temp, cloudsim, hostList.asJava, new VmAllocationPolicyBestFit)
   //val dc0 = helper.createNetworkDc(dc0_temp, cloudsim,hostList, new VmAllocationPolicyWorstFit)
 
   //Network Topology
   val topology = "topology.brite"
-  helper.configureNetwork(topology,cloudsim,dc0,broker)
-
+  helper.configureNetwork(topology, cloudsim, dc0, broker)
 
 
   //Creates VMs to run applications.
-  val vmtemp : VmConfigHelper = new VmConfigHelper(simulation = "simulation1",model = "GeneralSimulations")
-  val vmList:List[Vm] = List.tabulate(numVms)(i=>helper.createVms(vmtemp))
+  val vmtemp: VmConfigHelper = new VmConfigHelper(simulation = "simulation1", model = "GeneralSimulations")
+  val vmList: List[Vm] = List.tabulate(numVms)(i => helper.createVms(vmtemp))
 
   //Creating cloudlets variable and list and calling createCloudlets()
-  val cltemp : CloudletConfigHelper = new CloudletConfigHelper(simulation = "simulation1",model = "GeneralSimulations")
-  val cloudlets:List[Cloudlet] = List.tabulate(numcl)(i=>helper.createCloudLets(cltemp))
+  val cltemp: CloudletConfigHelper = new CloudletConfigHelper(simulation = "simulation1", model = "GeneralSimulations")
+  val cloudlets: List[Cloudlet] = List.tabulate(numcl)(i => helper.createCloudLets(cltemp))
 
 
   //submitting vmlist and cloudletlist to broker.

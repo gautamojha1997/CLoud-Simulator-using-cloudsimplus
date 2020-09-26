@@ -1,7 +1,7 @@
 package GeneralSimulations
 
 import com.typesafe.config.ConfigFactory
-import org.cloudbus.cloudsim.allocationpolicies.VmAllocationPolicyBestFit
+import org.cloudbus.cloudsim.allocationpolicies.{VmAllocationPolicyBestFit, VmAllocationPolicyRoundRobin}
 import org.cloudbus.cloudsim.cloudlets.Cloudlet
 import org.cloudbus.cloudsim.core.CloudSim
 import org.cloudbus.cloudsim.hosts.Host
@@ -10,6 +10,7 @@ import org.cloudbus.cloudsim.vms.Vm
 import org.cloudsimplus.builders.tables.CloudletsTableBuilder
 import org.slf4j.{Logger, LoggerFactory}
 import utils._
+
 import collection.JavaConverters._
 
 object Simulation1 extends App {
@@ -33,7 +34,6 @@ object Simulation1 extends App {
 
   var numVms = conf.getInt("simulation1.vm.numberofvm")
   var numHosts = conf.getInt("simulation1.host.numberofhost")
-  val numdcs = conf.getInt("simulation1.dataCenter.numberofDc")
   var numcl = conf.getInt("simulation1.cloudLet.numberofCL")
 
 
@@ -44,8 +44,8 @@ object Simulation1 extends App {
   //Creates a Datacenter with a list of Hosts.
   //Uses a VmAllocationPolicySimple by default to allocate VMs
   val dc0_temp: DataCenterConfigHelper = new DataCenterConfigHelper(simulation = "simulation1", model = "GeneralSimulations")
-  var dc0 = helper.createSimpleDc(dc0_temp, cloudsim, hostList.asJava, new VmAllocationPolicyBestFit)
-  //val dc0 = helper.createNetworkDc(dc0_temp, cloudsim,hostList, new VmAllocationPolicyWorstFit)
+  var dc0 = helper.createSimpleDc(dc0_temp, cloudsim, hostList.asJava, new VmAllocationPolicyRoundRobin)
+
 
   //Network Topology
   val topology = "topology.brite"

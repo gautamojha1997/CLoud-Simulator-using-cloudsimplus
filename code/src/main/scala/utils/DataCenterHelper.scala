@@ -22,6 +22,7 @@ import org.cloudbus.cloudsim.vms.{Vm, VmSimple}
 import scala.collection.mutable.ListBuffer
 import org.cloudbus.cloudsim.network.topologies.BriteNetworkTopology
 import org.cloudbus.cloudsim.network.topologies.NetworkTopology
+import org.cloudbus.cloudsim.schedulers.cloudlet.{CloudletSchedulerSpaceShared, CloudletSchedulerTimeShared}
 
 class DataCenterHelper {
 
@@ -36,7 +37,7 @@ class DataCenterHelper {
     dc0
   }
 
-  def createNetworkDc(dc:DataCenterConfigHelper,cloudSim: CloudSim, hostList:util.ArrayList[Host], policy: VmAllocationPolicyAbstract): Datacenter ={
+  def createNetworkDc(dc:DataCenterConfigHelper,cloudSim: CloudSim, hostList:util.List[Host], policy: VmAllocationPolicyAbstract): Datacenter ={
     val dc1 = new NetworkDatacenter(cloudSim,hostList,policy)
     dc1.getCharacteristics.setCostPerSecond(dc.cost).setCostPerMem(dc.costPerMemory).setCostPerBw(dc.costPerBw).setCostPerStorage(dc.costPerStorage).setOs(dc.os)
     dc1
@@ -68,6 +69,20 @@ class DataCenterHelper {
     vm0.setRam(vm.ram).setBw(vm.bw).setSize(vm.size)
     vm0
   }
+
+
+  def createIaasVms(mips: Long, ram: Long, bw : Long, size : Long, pesNumber: Long): Vm = {
+    val vm0 = new VmSimple(mips,pesNumber)
+    vm0.setRam(ram).setBw(bw).setSize(size)
+    vm0
+  }
+
+  def createIaasDc(dc:DataCenterConfigHelper,cloudSim: CloudSim, hostList:util.List[Host], policy: VmAllocationPolicyAbstract, os: String): Datacenter = {
+    val dc0 = new DatacenterSimple(cloudSim,hostList,policy)
+    dc0.getCharacteristics.setCostPerSecond(dc.cost).setCostPerMem(dc.costPerMemory).setCostPerBw(dc.costPerBw).setCostPerStorage(dc.costPerStorage).setOs(os)
+    dc0
+  }
+
 
   //val SEED = 1234567
   def createCloudLets(cl:CloudletConfigHelper): Cloudlet ={

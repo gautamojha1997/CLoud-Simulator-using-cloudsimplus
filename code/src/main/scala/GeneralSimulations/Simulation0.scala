@@ -33,7 +33,6 @@ object Simulation0 extends App {
 
   var numVms = conf.getInt("simulation0.vm.numberofvm")
   var numHosts = conf.getInt("simulation0.host.numberofhost")
-  val numdcs = conf.getInt("simulation0.dataCenter.numberofDc")
   var numcl = conf.getInt("simulation0.cloudLet.numberofCL")
 
 
@@ -45,7 +44,6 @@ object Simulation0 extends App {
   //Uses a VmAllocationPolicySimple by default to allocate VMs
   val dc0_temp: DataCenterConfigHelper = new DataCenterConfigHelper(simulation = "simulation0", model = "GeneralSimulations")
   var dc0 = helper.createSimpleDc(dc0_temp, cloudsim, hostList.asJava, new VmAllocationPolicyWorstFit)
-  //val dc0 = helper.createNetworkDc(dc0_temp, cloudsim,hostList, new VmAllocationPolicyWorstFit)
 
   //Network Topology
   val topology = "topology.brite"

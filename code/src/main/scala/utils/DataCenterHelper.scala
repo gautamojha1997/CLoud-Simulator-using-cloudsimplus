@@ -16,7 +16,7 @@ import org.cloudbus.cloudsim.hosts.{Host, HostSimple}
 import org.cloudbus.cloudsim.network.topologies.NetworkTopology
 import org.cloudbus.cloudsim.resources.{Pe, PeSimple}
 import org.cloudbus.cloudsim.schedulers.vm.{VmSchedulerAbstract, VmSchedulerSpaceShared, VmSchedulerTimeShared}
-import org.cloudbus.cloudsim.utilizationmodels.{UtilizationModelDynamic, UtilizationModelFull, UtilizationModelStochastic}
+import org.cloudbus.cloudsim.utilizationmodels.{UtilizationModel, UtilizationModelDynamic, UtilizationModelFull, UtilizationModelStochastic}
 import org.cloudbus.cloudsim.vms.{Vm, VmSimple}
 
 import scala.collection.mutable.ListBuffer
@@ -84,12 +84,22 @@ class DataCenterHelper {
   }
 
 
-  //val SEED = 1234567
+
   def createCloudLets(cl:CloudletConfigHelper): Cloudlet ={
-    val utilizationModel = new UtilizationModelDynamic(0.5)
-    //val utilizationModel = new UtilizationModelStochastic(SEED)
-    val cloudlet0 = new CloudletSimple(cl.length,cl.pesNumber, utilizationModel)
-    cloudlet0
+
+    var utilization = cl.utilization
+    var utilizationModelDynamic: UtilizationModelDynamic = new UtilizationModelDynamic(0.5)
+    var utilizationModelFull: UtilizationModelFull  = new UtilizationModelFull()
+
+    if (utilization == "dynamic"){
+      val cloudlet0 = new CloudletSimple(cl.length,cl.pesNumber, utilizationModelDynamic)
+      cloudlet0
+    }
+    else {
+      val cloudlet0 = new CloudletSimple(cl.length,cl.pesNumber, utilizationModelFull)
+      cloudlet0
+    }
+
   }
 
 }

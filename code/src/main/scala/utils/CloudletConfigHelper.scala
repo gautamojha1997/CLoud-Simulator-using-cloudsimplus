@@ -10,4 +10,5 @@ class CloudletConfigHelper(simulation: String, model: String) {
   val length = conf.getInt(path+"."+"length")
   val pesNumber = conf.getInt(path+"."+"pesNumber")
   val numberofCL = conf.getInt(path+"."+"numberofCL")
+  val utilization = conf.getString(path+ "." +"utilization")
 }

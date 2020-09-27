@@ -1,5 +1,3 @@
-import GeneralSimulations.Simulation1.{cloudsim, dc0_temp, helper, hostList, hosttemp, numHosts}
-import MixedSimulations.MixedSim.{helper, iaasNumVms, vbw, vcores, vmips, vram, vsize}
 import org.cloudbus.cloudsim.allocationpolicies.VmAllocationPolicyBestFit
 import org.cloudbus.cloudsim.brokers.DatacenterBrokerSimple
 import org.cloudbus.cloudsim.cloudlets.Cloudlet
@@ -10,7 +8,6 @@ import org.cloudbus.cloudsim.resources.{Pe, PeSimple}
 import org.cloudbus.cloudsim.schedulers.vm.VmSchedulerTimeShared
 import org.cloudbus.cloudsim.vms.Vm
 import org.scalatest.FunSuite
-import org.slf4j.{Logger, LoggerFactory}
 import utils.{CloudletConfigHelper, DataCenterConfigHelper, DataCenterHelper, HostConfigHelper, VmConfigHelper}
 
 import collection.JavaConverters._

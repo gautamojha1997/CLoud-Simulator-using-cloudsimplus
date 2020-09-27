@@ -54,7 +54,6 @@ object Simulation0 extends App {
   val vmtemp: VmConfigHelper = new VmConfigHelper(simulation = "simulation0", model = "GeneralSimulations")
   val vmList: List[Vm] = List.tabulate(numVms)(i => helper.createVms(vmtemp))
 
-
   //Creating cloudlets variable and list and calling createCloudlets()
   val cltemp: CloudletConfigHelper = new CloudletConfigHelper(simulation = "simulation0", model = "GeneralSimulations")
   val cloudlets: List[Cloudlet] = List.tabulate(numcl)(i => helper.createCloudLets(cltemp))

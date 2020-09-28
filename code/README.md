@@ -137,7 +137,7 @@ INFO  Overall Cost for this simulation - 1764.07791
 ## Simulation 1 : 
 It consists of **single datacenter with 3 hosts, 2 vm and 4 cloudlets**. The simulation uses **VmAllocationPolicyRoundRobin** for vm allocation and **VmSchedulerTimeShared** for Vm Scheduling. 
 
-###Result of Simulation 1:
+### Result of Simulation 1:
 
 
 ```
@@ -162,7 +162,7 @@ INFO  Overall Cost for this simulation - 480.06600000000003
 ## Simulation 2 : 
 It consists of **single datacenter with 4 hosts, 3 vm and 4 cloudlets**. The simulation uses **VmAllocationPolicyWorstFit** for vm allocation and **VmSchedulerSpaceShared** for Vm Scheduling. 
 
-###Result of Simulation 2:
+### Result of Simulation 2:
 
 
 ```

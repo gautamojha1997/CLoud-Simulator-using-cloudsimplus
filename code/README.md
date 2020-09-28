@@ -8,18 +8,20 @@ The simulations depict various Vm Allocation Policy, configuration and logger us
 
 Clone the project
 
-```git clone [clone link](https://ojhagautam97@bitbucket.org/cs441-fall2020/gautamkumar_ojha_hw1.git) ```
+```git clone https://ojhagautam97@bitbucket.org/cs441-fall2020/gautamkumar_ojha_hw1.git ```
+
 
 Now the project can be run using intellij or cmd.
 ## For cmd : 
 1. Navigate to cd gautamkumar_ojha_hw1\code .
 2. Run the simulations with the command : sbt clean compile run. 
 3. Run the test cases using the command : sbt clean compile test. 
-<br>
+
 
 ##For Intellij: 
 1. Open the cloned project in intellij.
 2. Directly run all the simulations to see each simulation results.
+
 
 #Code Structure
 1. The project  consists of three folders viz. GeneralSimulations, MixedSimulations and Utils.
@@ -27,10 +29,13 @@ Now the project can be run using intellij or cmd.
 3. MixedSimulations consists of a simulation class consisting of a broker and 3 datacenters for iaas, saas and paas.
 4. Utils consists of files which are helper classes for the simulations.
 
-#Configuration Files<br>
-There are two config files for general and mixed simulations.<br>
-* GeneralSimulations.conf consists of following values for each simulation. <br>
-    * (Example of simulation0)<br>
+#Configuration Files
+There are two config files for general and mixed simulations.
+
+* GeneralSimulations.conf consists of following values for each simulation. 
+
+    * (Example of simulation0)
+    
 ```
 simulation0 : {
  

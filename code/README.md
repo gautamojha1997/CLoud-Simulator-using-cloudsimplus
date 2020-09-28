@@ -1,4 +1,4 @@
-**CS 441 : HW1 Description: Create cloud simulators for evaluating executions of applications in cloud datacenters with different characteristics and deployment models.**
+# CS 441 : HW1 Description: Create cloud simulators for evaluating executions of applications in cloud datacenters with different characteristics and deployment models.
 
 The Project aims to make simulations of cloud Datacenters, and it's components. The simulation is done using Cloudsim Plus framework and Scala. 
 The implementation consists of general simulations and mixed simulations for services like IAAS, PAAS, and IAAS. 

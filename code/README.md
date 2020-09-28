@@ -104,8 +104,7 @@ iaas : {
         os : "Mac"
     }
   }
-  
-``` 
+```
 
 # General Simulations Observation and Results
 
@@ -113,6 +112,7 @@ iaas : {
 It consists of **single datacenter with 2 hosts, 1 vm and 3 cloudlets**. The simulation uses **VmAllocationPolicyBestFit** for vm allocation and **VmSchedulerSpaceShared** for Vm Scheduling. 
 
 ### Result of Simulation 0:
+
 
 ```
 
@@ -130,11 +130,13 @@ INFO  Overall Cost for this simulation - 1764.07791
 
 ```
 
+
 **The Overall Cost for simulation0 : 1764.07791**
 
 ## Simulation 1 : 
 It consists of **single datacenter with 3 hosts, 2 vm and 4 cloudlets**. The simulation uses **VmAllocationPolicyRoundRobin** for vm allocation and **VmSchedulerTimeShared** for Vm Scheduling. 
 ###Result of Simulation 1:
+
 
 ```
 
@@ -151,11 +153,13 @@ Cloudlet|Status |DC|Host|Host PEs |VM|VM PEs   |CloudletLen|CloudletPEs|StartTim
 INFO  Overall Cost for this simulation - 480.06600000000003
 ```
 
+
 **The Overall Cost for simulation1 - 480.06600000000003**
 
 ## Simulation 2 : 
 It consists of **single datacenter with 4 hosts, 3 vm and 4 cloudlets**. The simulation uses **VmAllocationPolicyWorstFit** for vm allocation and **VmSchedulerSpaceShared** for Vm Scheduling. 
 ###Result of Simulation 2:
+
 
 ```
 
@@ -172,6 +176,7 @@ Cloudlet|Status |DC|Host|Host PEs |VM|VM PEs   |CloudletLen|CloudletPEs|StartTim
 INFO  Overall Cost for this simulation - 120.01080000000002
 ```
 
+
 **The Overall Cost for simulation2 - 120.01080000000002**
 
 #### Observations for general simulations:
@@ -187,6 +192,7 @@ and Scheduling policy most of the times it remains same.
 ## MixedSimulation:
 It consists of **single broker with 3 Datacenters for Iaas, Paas and Saas** wherein the cloudlets are assigned to the 3 Datacenters. 
 ### Result of MixedSim:
+
 
 ```
 INFO  Starting Mixed Simulation

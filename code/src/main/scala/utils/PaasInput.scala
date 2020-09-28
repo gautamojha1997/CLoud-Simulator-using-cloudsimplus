@@ -1,7 +1,7 @@
 package utils
 
 import org.slf4j.{Logger, LoggerFactory}
-
+/*This Class takes input from the user for the Paas simulation*/
 class PaasInput {
 
   val logger: Logger = LoggerFactory.getLogger(this.getClass)

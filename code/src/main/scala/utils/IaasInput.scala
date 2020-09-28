@@ -1,7 +1,7 @@
 package utils
 
 import org.slf4j.{Logger, LoggerFactory}
-
+/*This Class takes input from the user for the Iaas simulation*/
 class IaasInput {
 
   val logger: Logger = LoggerFactory.getLogger(this.getClass)

@@ -19,7 +19,7 @@ class DataCenterHelperTest extends FunSuite{
 
   val broker = helper.createBroker(cloudsim)
 
-  /*Testing whether broker object is not null and the helper.createBroker returns valid broker*/
+
   test("helper.createBrokerReturnsValidBroker"){
     val b = new DatacenterBrokerSimple(cloudsim)
     assert(b!=null)
@@ -92,6 +92,5 @@ class DataCenterHelperTest extends FunSuite{
     val cloudlets: List[Cloudlet] = List.tabulate(6)(i => helper.createCloudLets(cltemp))
     assert(cloudlets.size === 6)
   }
-
 
 }

@@ -4,14 +4,16 @@ The Project aims to make simulations of cloud Datacenters, and it's components. 
 The implementation consists of general simulations and mixed simulations for services like IAAS, PAAS, and IAAS. 
 The simulations depict various Vm Allocation Policy, configuration and logger usage.  
 
-#Instructions to run the simulations<br>
-Clone the project <br>
-git clone [clone link](https://ojhagautam97@bitbucket.org/cs441-fall2020/gautamkumar_ojha_hw1.git) <br><br>
-Now the project can be run using intellij or cmd.<br>
+#Instructions to run the simulations
+Clone the project
+
+git clone [clone link](https://ojhagautam97@bitbucket.org/cs441-fall2020/gautamkumar_ojha_hw1.git) 
+
+Now the project can be run using intellij or cmd.
 ##For cmd : 
-1. Navigate to cd gautamkumar_ojha_hw1\code .<br>
-2. Run the simulations with the command : sbt clean compile run. <br>
-3. Run the test cases using the command : sbt clean compile test. <br>
+1. Navigate to cd gautamkumar_ojha_hw1\code .
+2. Run the simulations with the command : sbt clean compile run. 
+3. Run the test cases using the command : sbt clean compile test. 
 <br>
 
 ##For Intellij: 

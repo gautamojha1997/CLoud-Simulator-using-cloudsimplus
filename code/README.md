@@ -70,9 +70,9 @@ simulation0 : {
      utilization : full
    }
  }
- ```
+```
 
-* MixedSimulations.conf consists all components values similar to general simulations but differentiating only in datacenters based on services.
+MixedSimulations.conf consists all components values similar to general simulations but differentiating only in datacenters based on services.
 
 ```
 iaas : {

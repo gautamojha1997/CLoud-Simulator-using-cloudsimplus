@@ -18,18 +18,18 @@ Now the project can be run using intellij or cmd.
 3. Run the test cases using the command : sbt clean compile test. 
 
 
-##For Intellij: 
+## For Intellij: 
 1. Open the cloned project in intellij.
 2. Directly run all the simulations to see each simulation results.
 
 
-#Code Structure
+# Code Structure
 1. The project  consists of three folders viz. GeneralSimulations, MixedSimulations and Utils.
 2. GeneralSimulations consists of 3 Simulations which depicts the usage of cloudsim plus framework based on different VmAllocationPolicy, configurations and VmSchedulingPolicy.
 3. MixedSimulations consists of a simulation class consisting of a broker and 3 datacenters for iaas, saas and paas.
 4. Utils consists of files which are helper classes for the simulations.
 
-#Configuration Files
+# Configuration Files
 There are two config files for general and mixed simulations.
 
 * GeneralSimulations.conf consists of following values for each simulation. 
@@ -71,7 +71,9 @@ simulation0 : {
    }
  }
  ```
+
 * MixedSimulations.conf consists all components values similar to general simulations but differentiating only in datacenters based on services.
+
 ```
 iaas : {
       dataCenter : {
@@ -105,12 +107,12 @@ iaas : {
   
 ``` 
 
-#General Simulations Observation and Results
+# General Simulations Observation and Results
 
 ## Simulation 0 : 
 It consists of **single datacenter with 2 hosts, 1 vm and 3 cloudlets**. The simulation uses **VmAllocationPolicyBestFit** for vm allocation and **VmSchedulerSpaceShared** for Vm Scheduling. 
 
-###Result of Simulation 0:
+### Result of Simulation 0:
 
 ```
 
@@ -127,11 +129,13 @@ Cloudlet|Status |DC|Host|Host PEs |VM|VM PEs   |CloudletLen|CloudletPEs|StartTim
 INFO  Overall Cost for this simulation - 1764.07791
 
 ```
+
 **The Overall Cost for simulation0 : 1764.07791**
 
 ## Simulation 1 : 
 It consists of **single datacenter with 3 hosts, 2 vm and 4 cloudlets**. The simulation uses **VmAllocationPolicyRoundRobin** for vm allocation and **VmSchedulerTimeShared** for Vm Scheduling. 
 ###Result of Simulation 1:
+
 ```
 
                                          SIMULATION RESULTS
@@ -146,11 +150,13 @@ Cloudlet|Status |DC|Host|Host PEs |VM|VM PEs   |CloudletLen|CloudletPEs|StartTim
 -----------------------------------------------------------------------------------------------------
 INFO  Overall Cost for this simulation - 480.06600000000003
 ```
+
 **The Overall Cost for simulation1 - 480.06600000000003**
 
 ## Simulation 2 : 
 It consists of **single datacenter with 4 hosts, 3 vm and 4 cloudlets**. The simulation uses **VmAllocationPolicyWorstFit** for vm allocation and **VmSchedulerSpaceShared** for Vm Scheduling. 
 ###Result of Simulation 2:
+
 ```
 
                                          SIMULATION RESULTS
@@ -165,9 +171,10 @@ Cloudlet|Status |DC|Host|Host PEs |VM|VM PEs   |CloudletLen|CloudletPEs|StartTim
 -----------------------------------------------------------------------------------------------------
 INFO  Overall Cost for this simulation - 120.01080000000002
 ```
+
 **The Overall Cost for simulation2 - 120.01080000000002**
 
-####Observations for general simulations:
+#### Observations for general simulations:
 - It is seen in three simulations the overall cost, execution, finish and start time doesn't change drastically on the basis of Vm Allocation 
 and Scheduling policy most of the times it remains same.
 - But changing the values in the config files drastically changes the overall cost, execution, finish and start time.
@@ -175,11 +182,12 @@ and Scheduling policy most of the times it remains same.
 - The general simulations gives overall idea of cloudsim plus framework and how it can be used to simulate cloud data centers.
 
 
-#Mixed Simulation Observation and Results
+# Mixed Simulation Observation and Results
 
-##MixedSimulation:
+## MixedSimulation:
 It consists of **single broker with 3 Datacenters for Iaas, Paas and Saas** wherein the cloudlets are assigned to the 3 Datacenters. 
-###Result of MixedSim:
+### Result of MixedSim:
+
 ```
 INFO  Starting Mixed Simulation
 INFO  Instantiating Cloudsim
@@ -295,7 +303,7 @@ INFO  Overall Cost for this  PAAS simulation - 59832.702240000006
 INFO  Overall Cost for this SAAS simulation - 57312.67104000001
 ```
 
-####Observations for Mixed simulation:
+#### Observations for Mixed simulation:
 - The Mixed Simulation consists of 3 services IAAS, PAAS and SAAS. The overall cost for IAAS being the most 62352.73344, for PAAS 59832.702240000006, and for SAAS 57312.67104000001.
 - For IAAS the client can specify their own vm specs which is done by eliciting the specs from the user.
 - For PAAS the client can specify the working environment specs which is done by eliciting the specs from the user.

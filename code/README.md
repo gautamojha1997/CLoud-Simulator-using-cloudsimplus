@@ -131,7 +131,7 @@ INFO  Overall Cost for this simulation - 1764.07791
 ```
 
 
-**The Overall Cost for simulation0 : 1764.07791**
+**The Overall Cost for simulation0 : 1764**
 
 ## Simulation 1 : 
 It consists of **single datacenter with 3 hosts, 2 vm and 4 cloudlets**. The simulation uses **VmAllocationPolicyRoundRobin** for vm allocation and **VmSchedulerTimeShared** for Vm Scheduling. 
@@ -154,7 +154,7 @@ INFO  Overall Cost for this simulation - 480.06600000000003
 ```
 
 
-**The Overall Cost for simulation1 - 480.06600000000003**
+**The Overall Cost for simulation1 - 480**
 
 ## Simulation 2 : 
 It consists of **single datacenter with 4 hosts, 3 vm and 4 cloudlets**. The simulation uses **VmAllocationPolicyWorstFit** for vm allocation and **VmSchedulerSpaceShared** for Vm Scheduling. 
@@ -177,7 +177,7 @@ INFO  Overall Cost for this simulation - 120.01080000000002
 ```
 
 
-**The Overall Cost for simulation2 - 120.01080000000002**
+**The Overall Cost for simulation2 - 120**
 
 #### Observations for general simulations:
 - It is seen in three simulations the overall cost, execution, finish and start time doesn't change drastically on the basis of Vm Allocation 
@@ -310,7 +310,7 @@ INFO  Overall Cost for this SAAS simulation - 57312.67104000001
 ```
 
 #### Observations for Mixed simulation:
-- The Mixed Simulation consists of 3 services IAAS, PAAS and SAAS. The overall cost for IAAS being the most 62352.73344, for PAAS 59832.702240000006, and for SAAS 57312.67104000001.
+- The Mixed Simulation consists of 3 services IAAS, PAAS and SAAS. The overall cost for IAAS being the most 62352, for PAAS 59832, and for SAAS 57312.
 - For IAAS the client can specify their own vm specs which is done by eliciting the specs from the user.
 - For PAAS the client can specify the working environment specs which is done by eliciting the specs from the user.
 - The Vm Allocation and Scheduling policy used in this case is similar to ones used in General Simulations.

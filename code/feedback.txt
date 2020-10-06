@@ -1,0 +1,11 @@
+Hi Gautamkumar,
+
+Your grade for HW1 is 12%
+
+Comments
+
+1. -0.5%: Explanation on why utilization policies impact execution time could be added.
+2. -0.5%: Explanation on why execution time/ cost of various service provisioning models are different.
+3. +3%: For building your simulations using functional Scala.
+
+Abhijeet
